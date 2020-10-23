@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ge.dao.StudentDao">
+
+    <!--
+    namespace:可以自定义但是最好用接口的全限定名称
+              包括接口，如：com.ge.dao.StudentDao
+    select中的id必须要用接口中方法的名称
+    resultType:返回结果类型，是sql语句查询后返回结果集ResultSet
+   遍历这个结果类型，得到java对象的类型
+   值是返回类型的全限定名称
+    -->
+    <!--无参-->
+    <select id="selectStudents" resultType="com.ge.domain.Student">
+        SELECT *FROM demo ;
+    </select>
+    <!--多个参数查询-->
+    <select id="selectStudent" resultType="com.ge.domain.Student">
+    SELECT id,name FROM demo WHERE id=#{MyId} or name=#{MyName}
+    </select>
+<insert id="insertStudents">
+    INSERT  INTO  demo VALUES (#{id},#{NAME});
+</insert>
+ <!--插入操作
+  #{}:大括号里面甜插入对象的属性名
+ -->
+    <insert id="insertStudent">
+
+        INSERT into demo VALUES (#{id},#{name});
+    </insert>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--控制台日志文件配置-->
+    <settings >
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <environments default="myDev">
+        <environment id="myDev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC"/>
+                <property name="username" value="root"/>
+                <property name="password" value="963"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--从类路径开始的target\classes， 文件必须经过编译之后才可以-->
+        <mapper resource="com/ge/dao/StudentDao.xml"/>
+    </mappers>
+</configuration>
